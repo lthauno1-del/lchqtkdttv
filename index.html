@@ -75,7 +75,18 @@ color: #2b2b2b;
       -webkit-background-clip:text;background-clip:text;color:transparent;
       text-shadow:0 0 16px rgba(255,122,168,.2);
     }
-    .slogan{white-space:nowrap;font-weight:600;line-height:1.2}
+    .slogan {
+  white-space: normal;             /* Cho phép xuống dòng */
+  word-wrap: break-word;           /* Tự động xuống dòng nếu quá dài */
+  overflow-wrap: break-word;
+  font-weight: 600;
+  line-height: 1.3;
+  font-size: clamp(16px, 4vw, 28px); /* Tự co giãn chữ */
+  text-align: center;              /* Căn giữa chữ */
+  display: inline-block;           /* Giữ được nền bo cong */
+  max-width: 100%;                 /* Không vượt khung */
+}
+
     .poster-wrap {
   flex: 1; /* cho poster-wrap cao bằng khung */
   display: flex;
@@ -269,10 +280,29 @@ input, textarea, select {
   display: inline-block;
   font-size: clamp(12px, 4vw, 24px); /* Tự co dãn từ 12px đến 24px */
 }
+.slogan {
+  font-size: clamp(16px, 4vw, 32px); /* tự co giãn theo màn hình */
+}
+.slogan {
+  display: inline-block;
+  font-size: clamp(16px, 4vw, 28px);
+  padding: 10px 20px;
+  border-radius: 1px;  /* 👈 thêm dòng này để giảm bo góc */
+}
+#bubbleCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* nằm dưới toàn bộ nội dung */
+  pointer-events: none; /* không chặn click */
+}
 
   </style>
 </head>
 <body>
+<canvas id="bubbleCanvas"></canvas>
 
     <!-- NGAY SAU <body> -->
 <div class="track w-full fixed top-0 left-0 z-50">
@@ -289,7 +319,7 @@ input, textarea, select {
     <div class="text-center mt-4 reveal">
   <h1 class="title-sugar text-5xl md:text-6xl">SUGARCADE</h1>
   <div class="mt-2 flex justify-center gap-3">
-  <span class="slogan small-note text-2xl px-3 py-1 rounded-full glow-text text-center"
+  <span class="slogan small-note text-2xl px-3 py-1 rounded-lg glow-text text-center"
         style="background:linear-gradient(90deg,#ffe7f2,#f0e8ff);border:1px solid rgba(255,255,255,.6)">
     Liên Chi Hội Khoa Quản trị Kinh doanh<br>Trường Đại học Kinh tế - Luật, ĐHQG TPHCM
   </span>
@@ -731,6 +761,95 @@ body::before {
   document.getElementById('scrollTopBtn').addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("bubbleCanvas");
+  const ctx = canvas.getContext("2d");
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  // Màu cơ bản + hiệu ứng cầu vồng
+  const baseColors = ["#ff4f81", "#b86bff", "#4fa3ff", "#00ffcc", "#ffe600"];
+
+  function rainbowColor(t) {
+    const r = Math.floor(127 * Math.sin(0.3 * t) + 128);
+    const g = Math.floor(127 * Math.sin(0.3 * t + 2) + 128);
+    const b = Math.floor(127 * Math.sin(0.3 * t + 4) + 128);
+    return `rgb(${r},${g},${b})`;
+  }
+
+  // Tạo bong bóng
+  const bubbles = Array.from({ length: 35 }, () => createBubble());
+
+  function createBubble() {
+    return {
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 15 + 10,
+      baseR: Math.random() * 15 + 10,
+      c: baseColors[Math.floor(Math.random() * baseColors.length)],
+      s: Math.random() * 1.5 + 0.5, // tốc độ bay nhanh hơn
+      dx: (Math.random() - 0.5) * 1.5,
+      rainbow: Math.random() < 0.3, // 30% bong bóng cầu vồng
+      burst: Math.random() < 0.25, // 25% bong bóng sẽ nở rồi vỡ
+      life: 0,
+      maxLife: Math.random() * 200 + 150
+    };
+  }
+
+  let frame = 0;
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    bubbles.forEach((b, i) => {
+      ctx.beginPath();
+
+      // Nếu là bong bóng cầu vồng → đổi màu theo thời gian
+      const color = b.rainbow ? rainbowColor(frame + i * 20) : b.c;
+
+      const gradient = ctx.createRadialGradient(b.x, b.y, b.r * 0.2, b.x, b.y, b.r);
+      gradient.addColorStop(0, color);
+      gradient.addColorStop(1, "rgba(0,0,0,0)");
+
+      ctx.fillStyle = gradient;
+      ctx.globalAlpha = 0.7; // đậm màu hơn
+      ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+
+      // Update vị trí
+      b.y -= b.s;
+      b.x += b.dx;
+      b.life++;
+
+      // Nếu bong bóng là loại nở → tăng kích thước nhanh
+      if (b.burst) {
+        b.r += 0.2;
+        if (b.life > b.maxLife) {
+          bubbles[i] = createBubble(); // Vỡ → tạo lại bong bóng mới
+        }
+      }
+
+      // Nếu bong bóng bay lên quá cao → reset
+      if (b.y + b.r < 0) {
+        bubbles[i] = createBubble();
+        bubbles[i].y = canvas.height + b.r;
+      }
+    });
+
+    frame++;
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+});
 </script>
 
 
