@@ -201,6 +201,29 @@ input[type="file"] {
   0%, 100% { text-shadow: 0 0 20px rgba(255, 122, 168, 0.35); }
   50% { text-shadow: 0 0 40px rgba(184, 107, 255, 0.65); }
 }
+.glow-text {
+  color: #6a0dad; /* màu chữ tím, bạn có thể đổi */
+  text-shadow: 0 0 5px #fff,
+               0 0 10px #ff6ec7,
+               0 0 20px #ff6ec7,
+               0 0 40px #ff6ec7;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #fff,
+                 0 0 10px #ff6ec7,
+                 0 0 20px #ff6ec7,
+                 0 0 30px #ff6ec7;
+  }
+  to {
+    text-shadow: 0 0 10px #fff,
+                 0 0 20px #ff6ec7,
+                 0 0 30px #ff6ec7,
+                 0 0 50px #ff6ec7;
+  }
+}
 
 
   </style>
@@ -220,11 +243,15 @@ input[type="file"] {
       <img src="https://i.postimg.cc/tCsdkNn0/Cover.png" alt="Banner Liên Chi Hội" />
     </div>
     <div class="text-center mt-4 reveal">
-      <h1 class="title-sugar text-5xl md:text-6xl">SUGARCADE</h1>
-      <div class="mt-2 flex justify-center gap-3">
-        <span class="slogan small-note text-2xl px-3 py-1 rounded-full" style="background:linear-gradient(90deg,#ffe7f2,#f0e8ff);border:1px solid rgba(255,255,255,.6)">Liên Chi Hội Khoa Quản trị Kinh doanh</span>
-      </div>
-    </div>
+  <h1 class="title-sugar text-5xl md:text-6xl">SUGARCADE</h1>
+  <div class="mt-2 flex justify-center gap-3">
+    <span class="slogan small-note text-2xl px-3 py-1 rounded-full glow-text"
+          style="background:linear-gradient(90deg,#ffe7f2,#f0e8ff);border:1px solid rgba(255,255,255,.6)">
+      Liên Chi Hội Khoa Quản trị Kinh doanh - Trường Đại học Kinh tế - Luật, ĐHQG TPHCM
+    </span>
+  </div>
+</div>
+
   </header>
 
 <main class="flex flex-col gap-6 ">
@@ -243,29 +270,29 @@ input[type="file"] {
 <!-- Nội dung bên phải -->
   <div class="glass reveal flex-1 flex flex-col space-y-6 text-sm leading-relaxed text-gray-700">
     <h3 class="text-lg font-bold text-pink-600">🍭 Vòng 01: ENCHANTED – “Nhiệm màu”</h3>
-    <p><b class="text-pink-500">⏰ Thời gian:</b> 08/9 – 15/9/2025</p>
-    <p><b class="text-pink-500">📍 Hình thức:</b> Trực tuyến</p>
+    <p><b class="text-pink-500">⏰ Thời gian:</b> 08/9/2025 – 15/9/2025.</p>
+    <p><b class="text-pink-500">📍 Hình thức:</b> Trực tuyến.</p>
     <p><b class="text-pink-500">📌 Nội dung:</b> Thí sinh làm bài trực tiếp qua biểu mẫu trên trang truyền thông Liên Chi hội.</p>
 
     <h3 class="text-lg font-bold text-purple-600">🍬 Vòng 02: RESONANT – “Giao thoa”</h3>
-    <p><b class="text-purple-500">⏰ Thời gian:</b> 19/9/2025</p>
-    <p><b class="text-purple-500">📍 Hình thức:</b> Trực tiếp tại Trường ĐH Kinh tế - Luật</p>
+    <p><b class="text-purple-500">⏰ Thời gian:</b> 19/9/2025.</p>
+    <p><b class="text-purple-500">📍 Hình thức:</b> Trực tiếp tại Trường ĐH Kinh tế - Luật.</p>
     <p><b class="text-purple-500">📌 Nội dung:</b> Thí sinh vượt qua 3 trạm thử thách theo nhóm:</p>
     <ul class="list-disc ml-6 space-y-1">
-      <li><b class="text-pink-400">Trạm 01:</b> Chụp ảnh, thiết kế hình, viết bài truyền thông ngắn</li>
-      <li><b class="text-pink-400">Trạm 02:</b> Thảo luận phản biện, bảo vệ quan điểm</li>
-      <li><b class="text-pink-400">Trạm 03:</b> Giải quyết tình huống, đưa ra giải pháp</li>
+      <li><b class="text-pink-400">Trạm 01:</b> Chụp ảnh, thiết kế hình, viết bài truyền thông ngắn.</li>
+      <li><b class="text-pink-400">Trạm 02:</b> Thảo luận phản biện, bảo vệ quan điểm.</li>
+      <li><b class="text-pink-400">Trạm 03:</b> Giải quyết tình huống, đưa ra giải pháp.</li>
     </ul>
 
     <h3 class="text-lg font-bold text-fuchsia-600">🍡 Vòng 03: FLAVOURFUL – “Rực rỡ”</h3>
-    <p><b class="text-fuchsia-500">⏰ Thời gian:</b> 25/9/2025</p>
-    <p><b class="text-fuchsia-500">📍 Hình thức:</b> Trực tiếp tại Trường ĐH Kinh tế - Luật</p>
-    <p><b class="text-fuchsia-500">📌 Nội dung:</b> Phỏng vấn cá nhân</p>
+    <p><b class="text-fuchsia-500">⏰ Thời gian:</b> 25/9/2025.</p>
+    <p><b class="text-fuchsia-500">📍 Hình thức:</b> Trực tiếp tại Trường ĐH Kinh tế - Luật.</p>
+    <p><b class="text-fuchsia-500">📌 Nội dung:</b> Phỏng vấn cá nhân:</p>
     <ul class="list-disc ml-6 space-y-1">
-      <li>Giới thiệu bản thân</li>
-      <li>Kỹ năng mềm</li>
-      <li>Kỹ năng chuyên môn</li>
-      <li>Đánh giá dựa trên năng lực, sáng tạo, phản xạ, thái độ</li>
+      <li>Giới thiệu bản thân.</li>
+      <li>Kỹ năng mềm.</li>
+      <li>Kỹ năng chuyên môn.</li>
+      <li>Đánh giá dựa trên năng lực, sáng tạo, phản xạ, thái độ.</li>
     </ul>
   </div>
 </div>
