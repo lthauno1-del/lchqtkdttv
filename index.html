@@ -558,7 +558,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /* Gửi form đến Google Apps Script */
   const statusEl = document.getElementById('status');
   const submitBtn = document.getElementById('submitBtn');
-  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyUrg_VY7OBebHKC1tWhyoyyVRTrLc1pohrw8e9a113aoc0ScEfK0CeMBlqit741_L9/exec';
+  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxHitjiaY5GR6CvMSufCjmuFG-jgYAoctP-yuZsRU1MYT3bcrKMS3-1frFRYu6JV42v/exec';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -572,7 +572,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbyUrg_VY7OBebHKC1tWhyoyyVRTrLc1pohrw8e9a113aoc0ScEfK0CeMBlqit741_L9/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbxHitjiaY5GR6CvMSufCjmuFG-jgYAoctP-yuZsRU1MYT3bcrKMS3-1frFRYu6JV42v/exec', {
   method: 'POST',
   body: new FormData(form)  // ← KHÔNG cần headers ở đây
  });
@@ -658,35 +658,7 @@ body::before {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("regForm");
-  const status = document.getElementById("status");
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault(); // Ngăn reload
-
-    status.textContent = "⏳ Đang gửi dữ liệu...";
-    
-    fetch("https://script.google.com/macros/s/AKfycbyUrg_VY7OBebHKC1tWhyoyyVRTrLc1pohrw8e9a113aoc0ScEfK0CeMBlqit741_L9/exec", {
-      method: "POST",
-      body: new FormData(form)
-    })
-    .then(res => res.json())
-    .then(data => {
-      if (data.result === "success") {
-        status.textContent = "✅ Gửi thành công!";
-        form.reset();
-      } else {
-        status.textContent = "❌ Lỗi: " + (data.error || "Không rõ");
-      }
-    })
-    .catch(err => {
-      status.textContent = "⚠️ Kết nối lỗi: " + err;
-    });
-  });
-});
-</script>
 
 </body>
 </html>
