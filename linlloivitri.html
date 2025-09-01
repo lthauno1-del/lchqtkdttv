@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&family=Roboto&display=swap" rel="stylesheet" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SUGARCADE — Tuyển Thành Viên K25</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <style>
+   
+.cover img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain; /* Giữ nguyên ảnh, không cắt, có thể có khoảng trống */
+  display: block;
+  margin: 0 auto;
+}
+.poster-wrap img {
+  width: 100%;        /* chiếm hết chiều ngang khung cha */
+  height: auto;       /* giữ tỉ lệ chuẩn */
+  max-width: 100%;    /* không vượt quá khung */
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.4); /* hoặc trong suốt */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  border-radius: 0 0 4px 4px;
+}
+
+.bar {
+  width: 20%; /* bạn sẽ điều chỉnh bằng JS */
+  height: 100%;
+  background: linear-gradient(90deg, #f94ce0, #c383f9, #d1bfff);
+  border-radius: 4px;
+  transition: width 0.2s ease;
+}
+
+     :root{ --pink:#ff7aa8; --purple:#b86bff; --soft1:#ffeaf4; }
+    html,body{scroll-behavior:smooth}
+    body{
+      font-family: 'Times New Roman', Times, serif;
+background:
+  radial-gradient(1200px 600px at 20% -10%, #ffeaf4 0%, transparent 60%),
+  radial-gradient(1000px 600px at 120% 10%, #efe6ff 0%, transparent 60%),
+  linear-gradient(160deg, #fff0f6 0%, #fbe8ff 40%, #f0f6ff 100%);
+color: #2b2b2b;
+    }
+    .container{max-width:1200px;margin:18px auto;padding:16px}
+    .glass{
+      background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.80));
+      border:1px solid rgba(255,255,255,.6);
+      border-radius:18px;
+      box-shadow:0 18px 50px rgba(120, 50, 130, 0.12), inset 0 -6px 18px rgba(0,0,0,0.03);
+      padding:16px;
+    }
+    .cover{border-radius:14px;overflow:hidden;box-shadow:0 28px 60px rgba(255, 105, 150, .14)}
+    .title-sugar{
+      font-weight:800;letter-spacing:.02em;
+      background: linear-gradient(90deg, #ff7aa8 0%, #ff4f91 28%, #b86bff 65%, #91b4ff 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      text-shadow:0 0 16px rgba(255,122,168,.2);
+    }
+    .slogan{white-space:nowrap;font-weight:600;line-height:1.2}
+    .poster-wrap {
+  flex: 1; /* cho poster-wrap cao bằng khung */
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.poster-wrap img {
+  height: 100%;       /* chiếm full chiều cao khung */
+  width: auto;        /* giữ tỉ lệ gốc */
+  max-height: 100%;   /* không vượt quá khung */
+  object-fit: contain; /* giữ nguyên tỉ lệ, không bị méo */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+    .btn-arcade{
+      background:linear-gradient(180deg, var(--pink), var(--purple));
+      color:#fff;border:none;border-radius:999px;padding:10px 20px;font-weight:700;
+      box-shadow:0 10px 24px rgba(184,107,255,.22);transition:transform .16s,box-shadow .16s;
+    }
+    .btn-arcade:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(184,107,255,.28)}
+    .reveal{opacity:0;transform:translateY(18px);transition:all .7s cubic-bezier(.2,.9,.2,1)}
+    .reveal.show{opacity:1;transform:translateY(0)}
+    .section-title{display:flex;align-items:center;gap:10px;font-weight:800;color:#b74bd5;text-transform:uppercase;font-size:13px}
+    .section-title::before{content:"";display:block;width:44px;height:8px;border-radius:999px;background:linear-gradient(90deg,#ffb6d4,#c9a6ff);box-shadow:0 6px 18px rgba(184,107,255,.18)}
+    .field{transition:box-shadow .25s,transform .12s}
+    .field:focus{box-shadow:0 0 0 6px rgba(255,122,168,.12);transform:translateY(-1px);outline:none}
+    .group-card{background:linear-gradient(180deg,#fff,#fff);border-radius:12px;padding:12px;border:1px solid rgba(0,0,0,0.04);box-shadow:0 8px 26px rgba(120,50,130,.04)}
+.track{
+  height:10px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#ffe7f5,#f0e0ff)
+}
+.bar{
+  height:100%;
+  width:0%;
+  border-radius:999px;
+  background:linear-gradient(90deg,#ff6aa8,#b86bff);
+  transition:width .35s
+}
+    .hidden-block{display:none}
+    .small-note{font-size:12px;color:#666}
+    label.question{display:block;font-weight:700;margin-bottom:8px;color:#3b2a3f}
+    textarea,input,select{width:100%;padding:12px;border-radius:12px;border:1px solid #e6ddec;background:#fff;font-size:14px}
+    #status{min-height:22px}
+    @media (max-width:1024px){
+      .grid-cols{grid-template-columns:1fr!important}
+      .title-sugar{font-size:2.4rem}
+      .container{padding:12px}
+    }
+    .title-sugar {
+  font-weight: 900;
+  letter-spacing: .02em;
+  background: linear-gradient(90deg, #ff7aa8 0%, #ff4f91 28%, #b86bff 65%, #91b4ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(255, 122, 168, 0.35); /* bóng mềm */
+  animation: pulseShadow 3s ease-in-out infinite;
+}
+
+/* Hiệu ứng glowing nhấp nháy */
+@keyframes pulseShadow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(255, 122, 168, 0.35);
+  }
+  50% {
+    text-shadow: 0 0 40px rgba(184, 107, 255, 0.65);
+  }
+}
+
+.progress-container {
+  position: sticky; /* Hoặc fixed nếu muốn luôn đứng yên */
+  top: 0; /* Đặt ở đầu viewport */
+  width: 100%;
+  background-color: #f3f3f3;
+  height: 6px;
+  z-index: 9999; /* Để nổi lên trên các phần khác */
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center; /* căn giữa toàn khối */
+    gap: 50px; /* khoảng cách giữa 2 cột */
+    margin-top: 20px;
+}
+
+.contact-box {
+    background: #fff;
+    padding: 20px 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: left;
+    min-width: 250px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: linear-gradient(90deg, #ff8a8a, #e97cd9); /* Màu đẹp như bạn thích */
+  width: 0%; /* Tăng dần khi scroll */
+  transition: width 0.3s ease;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 5px rgba(59,130,246,0.5);
+}
+input[type="file"] {
+  display: block;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+.title-sugar {
+  animation: pulseShadow 3s ease-in-out infinite;
+}
+@keyframes pulseShadow {
+  0%, 100% { text-shadow: 0 0 20px rgba(255, 122, 168, 0.35); }
+  50% { text-shadow: 0 0 40px rgba(184, 107, 255, 0.65); }
+}
+
+
+  </style>
+</head>
+<body>
+
+    <!-- NGAY SAU <body> -->
+<div class="track w-full fixed top-0 left-0 z-50">
+  <div id="progBar" class="bar"></div>
+</div>
+
+    
+    
+<div class="container">
+  <header class="mb-6">
+    <div class="cover reveal">
+      <img src="https://i.ibb.co/LDsV28nC/Cover.png" alt="Banner Liên Chi Hội" />
+    </div>
+    <div class="text-center mt-4 reveal">
+      <h1 class="title-sugar text-5xl md:text-6xl">SUGARCADE</h1>
+      <div class="mt-2 flex justify-center gap-3">
+        <span class="slogan small-note px-3 py-1 rounded-full" style="background:linear-gradient(90deg,#ffe7f2,#f0e8ff);border:1px solid rgba(255,255,255,.6)">Liên Chi Hội Khoa Quản trị Kinh doanh</span>
+      </div>
+    </div>
+  </header>
+
+<main class="flex flex-col gap-6 ">
+   <div class="flex gap-6 flex-col lg:flex-row items-stretch">
+
+<!-- Poster bên trái -->
+<div class="glass reveal lg:w-1/2 flex flex-col">
+  <div class="section-title mb-3">Poster chương trình</div>
+  <div class="poster-wrap flex-1 flex items-center justify-center">
+    <img src="https://i.pinimg.com/736x/22/4f/9a/224f9a41f290eb4e1dd964b2c05cf71d.jpg"
+         alt="Poster SUGARCADE" 
+         class="poster-img w-full h-auto max-w-2xl" />
+  </div>
+</div>
+    </section>
+<!-- Nội dung bên phải -->
+  <div class="glass reveal flex-1 flex flex-col space-y-6 text-sm leading-relaxed text-gray-700">
+    <h3 class="text-lg font-bold text-pink-600">🍭 Vòng 01: ENCHANTED – “Nhiệm màu”</h3>
+    <p><b class="text-pink-500">⏰ Thời gian:</b> 08/9 – 15/9/2025</p>
+    <p><b class="text-pink-500">📍 Hình thức:</b> Trực tuyến</p>
+    <p><b class="text-pink-500">📌 Nội dung:</b> Thí sinh làm bài trực tiếp qua biểu mẫu trên trang truyền thông Liên Chi hội.</p>
+
+    <h3 class="text-lg font-bold text-purple-600">🍬 Vòng 02: RESONANT – “Giao thoa”</h3>
+    <p><b class="text-purple-500">⏰ Thời gian:</b> 19/9/2025</p>
+    <p><b class="text-purple-500">📍 Hình thức:</b> Trực tiếp tại Trường ĐH Kinh tế - Luật</p>
+    <p><b class="text-purple-500">📌 Nội dung:</b> Thí sinh vượt qua 3 trạm thử thách theo nhóm:</p>
+    <ul class="list-disc ml-6 space-y-1">
+      <li><b class="text-pink-400">Trạm 01:</b> Chụp ảnh, thiết kế hình, viết bài truyền thông ngắn</li>
+      <li><b class="text-pink-400">Trạm 02:</b> Thảo luận phản biện, bảo vệ quan điểm</li>
+      <li><b class="text-pink-400">Trạm 03:</b> Giải quyết tình huống, đưa ra giải pháp</li>
+    </ul>
+
+    <h3 class="text-lg font-bold text-fuchsia-600">🍡 Vòng 03: FLAVOURFUL – “Rực rỡ”</h3>
+    <p><b class="text-fuchsia-500">⏰ Thời gian:</b> 25/9/2025</p>
+    <p><b class="text-fuchsia-500">📍 Hình thức:</b> Trực tiếp tại Trường ĐH Kinh tế - Luật</p>
+    <p><b class="text-fuchsia-500">📌 Nội dung:</b> Phỏng vấn cá nhân</p>
+    <ul class="list-disc ml-6 space-y-1">
+      <li>Giới thiệu bản thân</li>
+      <li>Kỹ năng mềm</li>
+      <li>Kỹ năng chuyên môn</li>
+      <li>Đánh giá dựa trên năng lực, sáng tạo, phản xạ, thái độ</li>
+    </ul>
+  </div>
+</div>
+
+    <aside class="reveal">
+      <div class="glass sticky top-6 max-w-5xl mx-auto">
+        <h3 class="text-2xl font-extrabold text-pink-600 text-center mb-2">Hoàn tất đăng ký để không bỏ lỡ cơ hội thú vị!</h3>
+        <p class="text-sm text-center text-gray-600 mb-3">Đăng ký tham gia – Cùng tạo nên hành trình tuyệt vời!</p>
+        
+
+        <form id="regForm" class="space-y-4">
+          <!-- Thông tin cá nhân -->
+          <div class="group-card">
+            <div class="section-title mb-3">Thông tin cá nhân</div>
+            <div class="mb-3">
+              <label class="question">Họ và tên của bạn:</label>
+              <input class="field" name="hoTen" required>
+            </div>
+            <div class="mb-3">
+              <label class="question">Mã lớp của bạn:</label>
+              <input class="field" name="maLop" required>
+            </div>
+            <div class="mb-3">
+              <label class="question">MSSV của bạn:</label>
+              <input class="field" name="mssv" required>
+            </div>
+            <div class="mb-3">
+              <label class="question">Email Trường của bạn:</label>
+              <input class="field" type="Email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label class="question">SĐT của bạn:</label>
+              <input class="field" name="sdt" required>
+            </div>
+            <div class="mb-3">
+              <label class="question">Link Facebook cá nhân của bạn:</label>
+              <input class="field" name="fbcn" type="url" placeholder="https://facebook.com/yourprofile" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="question">Link GG DRIVE 1 bức ảnh cá nhân (chính diện) bạn cảm thấy tự tin nhất (Nhớ mở quyền truy cập nhé):</label>
+              <input class="field" name="tutin" required>
+            </div>
+
+            <div class="mb-4">
+              <label class="block mb-2 font-semibold">Hiện tại bạn đang sinh sống ở đâu?</label>
+              <select name="choo" required class="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">-- Chọn --</option>
+                <option value="Nhà riêng (Trọ, Chung cư...)">Nhà riêng (Trọ, Chung cư...)</option>
+                <option value="Ký túc xá">Ký túc xá</option>
+              </select>
+            </div>
+
+<div class="mb-3">
+    <label class="question">Bạn đang sử dụng phương tiện gì?</label>
+    <input class="field" name="phtien" placeholder="Ví dụ: Xe máy, xe buýt, xe đạp..." required>
+</div>
+
+          <!-- 9 câu hỏi chung -->
+          <div class="group-card">
+            <div class="section-title mb-3">Câu hỏi chung</div>
+            <div class="mb-3">
+        <label class="question">
+            1. Nếu ví bản thân là một loại kẹo trong thế giới SUGARCADE, bạn sẽ là loại kẹo nào? Tại sao?
+        </label>
+        <textarea class="field" name="cau1" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="question">
+            2. Bạn phản ứng thế nào khi các thành viên cùng nhóm làm việc chậm hơn bạn mong muốn hoặc làm việc chưa hiệu quả? 
+            Khi gặp một nhiệm vụ mới và khó, bạn thường nghĩ “Mình sẽ làm được” hay “Mình cần học hỏi thêm trước”?
+        </label>
+        <textarea class="field" name="cau2" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="question">
+            3. Bạn lựa chọn một môi trường năng động để có những thay đổi mới hay những công việc ổn định có quy trình rõ ràng 
+            và luôn đạt được thành tích? Nếu bạn chọn chấp nhận thử thách, bạn nghĩ mình sẽ phải đối mặt với những khó khăn và rủi ro nào? 
+            Nếu bạn chọn công việc lặp đi lặp lại, bạn có sợ mình sẽ cảm thấy nhàm chán và mất động lực không?
+        </label>
+        <textarea class="field" name="cau3" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="question">
+            4. Bạn quan niệm thế nào về “tinh thần đồng đội”? Theo bạn, điều quan trọng nhất để làm việc nhóm hiệu quả là gì?
+        </label>
+        <textarea class="field" name="cau4" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="question">
+            5. Khi đối mặt với một quyết định khó khăn, bạn thường dựa vào trực giác, phân tích kỹ lưỡng, hay tìm lời khuyên từ người khác?
+        </label>
+        <textarea class="field" name="cau5" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="question">
+            6. Bạn nghĩ rằng mình là người hướng nội hay hướng ngoại? Có ý kiến cho rằng người hướng ngoại sẽ dễ dàng hòa nhập, 
+            kết nối với mọi người và làm việc nhóm hiệu quả hơn so với người hướng nội, bạn nghĩ sao về ý kiến này?
+        </label>
+        <textarea class="field" name="cau6" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="question">
+            7. Giả sử bạn được giao một công việc phải hoàn thành trước ngày cuối tuần, nhưng đó là trong tuần thi cuối kỳ của bạn, 
+            bạn cũng chưa ôn bài kỹ. Bạn sẽ làm thế nào để vừa đảm bảo tiến độ công việc đúng hạn, vừa có thể ôn bài cho kỳ thi?
+        </label>
+        <textarea class="field" name="cau7" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="question">
+            8. Trong quá trình làm việc nhóm, chắc chắn sẽ có lúc xảy ra áp lực hoặc mâu thuẫn. 
+            Nếu bạn rơi vào tình huống mất bình tĩnh (deadline gấp, đồng đội không phối hợp,...), 
+            bạn thường phản ứng thế nào? Bạn sẽ làm gì để lấy lại sự cân bằng và tiếp tục công việc?.
+        </label>
+        <textarea class="field" name="cau8" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="question">
+            9. Bạn sẽ giải quyết ra sao nếu bạn và nhóm trưởng xảy ra mâu thuẫn và không cùng chung một hướng giải quyết, 
+            trong khi cách của nhóm trưởng không hiệu quả và bảo thủ, bạn sẽ nghe theo hay chứng minh và làm theo ý của mình? 
+            Nêu cách giải quyết cụ thể.
+        </label>
+        <textarea class="field" name="cau9" rows="3" required></textarea>
+    </div>
+          </div>
+
+          <!-- Chọn ban + 5 câu hỏi -->
+          <div class="section-title mb-3">Chọn ban ứng tuyển</div>
+  <label class="question">Bạn muốn tham gia ban nào?</label>
+  <select id="banSelect" name="banThamGia" class="field">
+    <option value="">-- Chọn --</option>
+    <option value="Tổ chức - Xây dựng Hội">Tổ chức - Xây dựng Hội</option>
+    <option value="Sự kiện">Sự kiện</option>
+    <option value="Truyền thông - Đối ngoại">Truyền thông - Đối ngoại</option>
+  </select>
+  <div id="banQuestionsArea" class="mt-4 hidden-block"></div>
+</div>
+
+          <!-- Gửi gắm -->
+          <div class="group-card">
+  <div class="section-title mb-3">Gửi gắm</div>
+  <label class="question">Bạn muốn gửi gắm gì cho Liên Chi hội không?</label>
+  <textarea class="field" name="guiGamLCH" rows="3" required></textarea>
+</div>
+
+<button id="submitBtn" class="btn-arcade" type="submit">Gửi đăng ký</button>
+<p id="status" class="text-center mt-2 small-note"></p>
+</form>
+</div>
+</aside>
+  </main>
+
+
+
+
+
+<footer class="mt-6 text-center text-sm text-gray-600">
+  <div class="contact-container">
+    <!-- Ban Tổ Chức -->
+    <div class="contact-box">
+        <h3>Ban Tổ Chức</h3>
+        <p>📌 Liên Chi hội Khoa Quản trị Kinh doanh</p>
+        <p>📞 SĐT: 0768 020 472</p>
+        <p>📧 Email: 
+           <a href="mailto:lchquantrikinhdoanh@st.uel.edu.vn">
+             lchquantrikinhdoanh@st.uel.edu.vn
+           </a>
+        </p>
+        <p>🌐 Fanpage: 
+           <a href="https://www.facebook.com/LCH.QTKD" target="_blank">
+             Facebook
+           </a>
+        </p>
+    </div>
+
+    <!-- Hỗ trợ Kỹ thuật (IT) -->
+    <div class="contact-box">
+        <h3>Hỗ trợ Kỹ thuật (IT)</h3>
+        <p>👨‍💻 Họ tên: Lê Tấn Hậu</p>
+        <p>📞 SĐT: 0372 000 790</p>
+        <p>📧 Email: 
+           <a href="mailto:haultk24415@st.uel.edu.vn">
+             haultk24415@st.uel.edu.vn
+           </a>
+        </p>
+        <p>💬 Facebook: 
+           <a href="https://www.facebook.com/lthau.no1" target="_blank">
+             Facebook
+           </a>
+        </p>
+    </div>
+  </div>
+</footer>
+</div>
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  /* Reveal on scroll */
+  const revealElements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealElements.forEach(el => observer.observe(el));
+
+  /* Progress bar scroll tracking */
+  const progBar = document.getElementById('progBar');
+  const form = document.getElementById('regForm');
+  window.addEventListener('scroll', () => {
+    const rect = form.getBoundingClientRect();
+    const total = rect.height + window.innerHeight;
+    const shown = Math.max(0, window.innerHeight - rect.top);
+    const pct = Math.max(0, Math.min(100, Math.round(shown / total * 100)));
+    progBar.style.width = pct + '%';
+  });
+
+  /* Câu hỏi theo Ban */
+  const banSelect = document.getElementById('banSelect');
+  const banArea = document.getElementById('banQuestionsArea');
+  const banQuestions = {
+    "Tổ chức - Xây dựng Hội": [
+      'Nhắc đến ban Tổ chức - Xây dựng Hội, điều đầu tiên bạn nghĩ đến là gì? Bạn nghĩ thực tế thì ban mình sẽ làm những công việc như thế nào?',
+      'Điều gì ở bạn khiến bạn chọn ban Tổ chức - Xây dựng Hội thay vì những “hương vị” khác trong Liên Chi hội?',
+      'Bạn có quen với việc soạn thảo công văn, làm báo cáo, hoặc viết mail hợp tác không? Nếu chưa, bạn sẵn sàng học chứ?',
+      'Bạn nghĩ mình có phù hợp với môi trường làm việc nhiều deadline, nhiều giấy tờ và yêu cầu sự chính xác cao không? Vì sao? Bạn nghĩ như thế nào về câu: “Sự hoàn hảo nằm trong từng chi tiết nhỏ”?',
+      'Giả sử còn 03 ngày để hoàn tất các công tác chuẩn bị cho một chương trình lớn của Liên Chi, nhưng các công việc vẫn còn dở dang và các thành viên xảy ra mâu thuẫn, bạn sẽ làm thế nào để xoa dịu xung đột và đảm bảo các khâu chuẩn bị được hoàn thành?'
+    ],
+    "Sự kiện": [
+      'Lí do vì sao bạn chọn vào ban Tổ chức Sự kiện? Bạn nghĩ mình sẽ có những tố chất hay kĩ năng phù hợp với ban này?',
+      'Hãy kể về một sự kiện bạn từng tham gia (ở trường, CLB, lớp…), điều gì khiến bạn ấn tượng nhất hoặc muốn làm khác đi nếu bạn là Ban Tổ chức?',
+      'Trong quá trình diễn ra chương trình có những tình huống bất ngờ như: (1) mưa/gió ảnh hưởng ngoài trời; (2) khách mời chính đến muộn 30 phút. Bạn sẽ xử lý thế nào để chương trình vẫn thành công?',
+      'Bạn đang phụ trách một sự kiện lớn và một số thành viên không đồng ý với ý tưởng của bạn. Bạn sẽ làm gì để vừa duy trì đoàn kết vừa bảo vệ ý tưởng bạn tin là tốt?',
+      'Hệ thống âm thanh/ánh sáng gặp vấn đề trong workshop, bạn sẽ xử lí thế nào để chương trình tiếp tục?'
+    ],
+    "Truyền thông - Đối ngoại": [
+      'Bạn từng có kinh nghiệm nào trong lĩnh vực truyền thông kỹ thuật không? Nếu có, mô tả hoặc đính kèm 01 dự án, bài làm bạn tự hào nhất. Bạn dùng phần mềm nào để thiết kế và dựng video?',
+      'Các hoạt động truyền thông của Liên Chi hội đòi hỏi sự đa nhiệm. Nếu bạn chỉ mạnh 1 mảng, bạn có sẵn sàng học thêm để đóng góp trọn vẹn hơn cho tập thể không?',
+      'Nếu được vào ban Truyền thông - Đối ngoại, bạn mong muốn nhận được gì từ phía các anh/chị và các bạn thành viên trong ban?',
+      'Khi gặp sự cố sát bài đăng hoặc thiết bị (laptop hư), bạn sẽ làm gì để đảm bảo nhiệm vụ được hoàn thành?',
+      'Sản phẩm của bạn nhận góp ý cần sửa nhưng bạn chưa chắc đó là phương án tốt hơn. Bạn sẽ im lặng sửa hay bảo vệ sản phẩm? Đồng thời: chọn 1 nhân vật (Hiệp sĩ Bánh Quy / Phù thủy Kẹo Mềm / Tinh Linh Thạch Sữa) để khởi đầu và giải thích vì sao.'
+    ]
+  };
+
+  function renderBanQuestions(key) {
+    banArea.innerHTML = '';
+    if (!key) {
+      banArea.classList.add('hidden-block');
+      return;
+    }
+    banArea.classList.remove('hidden-block');
+
+    const questions = banQuestions[key] || [];
+    for (let i = 0; i < 5; i++) {
+      const div = document.createElement('div');
+      div.className = 'mb-3';
+
+      const label = document.createElement('label');
+      label.className = 'question';
+      label.textContent = questions[i] || `Câu hỏi Ban ${i + 1}`;
+
+      const textarea = document.createElement('textarea');
+      textarea.className = 'field';
+      textarea.name = `ban${i + 1}`;
+      textarea.rows = 3;
+
+      div.appendChild(label);
+      div.appendChild(textarea);
+      banArea.appendChild(div);
+    }
+  }
+
+  banSelect.addEventListener('change', (e) => {
+    renderBanQuestions(e.target.value);
+  });
+
+  /* Gửi form đến Google Apps Script */
+  const statusEl = document.getElementById('status');
+  const submitBtn = document.getElementById('submitBtn');
+  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyUrg_VY7OBebHKC1tWhyoyyVRTrLc1pohrw8e9a113aoc0ScEfK0CeMBlqit741_L9/exec';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.textContent = 'Đang gửi...';
+    submitBtn.disabled = true;
+
+    const formData = new FormData(form);
+    const payload = {};
+    formData.forEach((value, key) => {
+      payload[key] = value;
+    });
+
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyUrg_VY7OBebHKC1tWhyoyyVRTrLc1pohrw8e9a113aoc0ScEfK0CeMBlqit741_L9/exec', {
+  method: 'POST',
+  body: new FormData(form)  // ← KHÔNG cần headers ở đây
+ });
+
+      const result = await response.json();
+      if (result.result === 'success') {
+        statusEl.textContent = 'Gửi thành công! Cảm ơn bạn.';
+        form.reset();
+        progBar.style.width = '0%';
+        banArea.classList.add('hidden-block');
+      } else {
+        statusEl.textContent = 'Gửi thất bại. Vui lòng thử lại.';
+        console.error(result);
+      }
+    } catch (error) {
+      console.error(error);
+      statusEl.textContent = 'Lỗi gửi. Kiểm tra kết nối hoặc quyền Web App.';
+    } finally {
+      submitBtn.disabled = false;
+      setTimeout(() => statusEl.textContent = '', 5000);
+    }
+  });
+});
+</script>
+<!-- Nút cuộn lên đầu -->
+<button id="scrollTopBtn" class="btn-scroll-top">Lên đầu trang</button>
+
+<style>
+  /* Style cho nút cuộn lên đầu */
+  #scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(90deg, #ffe7f2, #f0e8ff);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #d6336c;  /* hồng đậm */
+    font-weight:700;
+    font-size: 9px;
+    padding: 12px 20px;
+    border-radius: 25px;
+    box-shadow: 0 6px 15px rgba(255, 183, 197, 0.6);
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+  }
+  #scrollTopBtn:hover {
+    background: linear-gradient(90deg, #f0a7c0, #c780b9);
+    box-shadow: 0 8px 20px rgba(255, 120, 160, 0.8);
+    color: #fff;
+  }
+   /* Nền gợn sóng loé sáng */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1; /* luôn nằm sau tất cả */
+  background: radial-gradient(circle at 50% 50%, rgba(255,122,168,0.4), transparent 70%),
+              radial-gradient(circle at 20% 80%, rgba(184,107,255,0.3), transparent 70%),
+              radial-gradient(circle at 80% 20%, rgba(145,180,255,0.25), transparent 70%);
+  background-size: 200% 200%;
+  animation: waveGlow 8s ease-in-out infinite alternate;
+  filter: blur(60px);
+}
+
+/* Animation cho gradient dịch chuyển */
+@keyframes waveGlow {
+  0% {
+    background-position: 20% 30%, 80% 70%, 50% 50%;
+  }
+  50% {
+    background-position: 80% 20%, 20% 80%, 40% 60%;
+  }
+  100% {
+    background-position: 50% 50%, 70% 30%, 30% 70%;
+  }
+}
+</style>
+
+<script>
+  // Scroll mượt lên đầu trang khi click nút
+  document.getElementById('scrollTopBtn').addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("regForm");
+  const status = document.getElementById("status");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // Ngăn reload
+
+    status.textContent = "⏳ Đang gửi dữ liệu...";
+    
+    fetch("https://script.google.com/macros/s/AKfycbyUrg_VY7OBebHKC1tWhyoyyVRTrLc1pohrw8e9a113aoc0ScEfK0CeMBlqit741_L9/exec", {
+      method: "POST",
+      body: new FormData(form)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.result === "success") {
+        status.textContent = "✅ Gửi thành công!";
+        form.reset();
+      } else {
+        status.textContent = "❌ Lỗi: " + (data.error || "Không rõ");
+      }
+    })
+    .catch(err => {
+      status.textContent = "⚠️ Kết nối lỗi: " + err;
+    });
+  });
+});
+</script>
+
+</body>
+</html>
