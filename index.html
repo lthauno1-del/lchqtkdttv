@@ -27,6 +27,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
+.question { white-space: pre-line; }
 
 
 
@@ -221,7 +222,7 @@ input[type="file"] {
     <div class="text-center mt-4 reveal">
       <h1 class="title-sugar text-5xl md:text-6xl">SUGARCADE</h1>
       <div class="mt-2 flex justify-center gap-3">
-        <span class="slogan small-note px-3 py-1 rounded-full" style="background:linear-gradient(90deg,#ffe7f2,#f0e8ff);border:1px solid rgba(255,255,255,.6)">Liên Chi Hội Khoa Quản trị Kinh doanh</span>
+        <span class="slogan small-note text-2xl px-3 py-1 rounded-full" style="background:linear-gradient(90deg,#ffe7f2,#f0e8ff);border:1px solid rgba(255,255,255,.6)">Liên Chi Hội Khoa Quản trị Kinh doanh</span>
       </div>
     </div>
   </header>
@@ -501,27 +502,27 @@ document.addEventListener('DOMContentLoaded', function () {
   const banArea = document.getElementById('banQuestionsArea');
   const banQuestions = {
     "Tổ chức - Xây dựng Hội": [
-      'Nhắc đến ban Tổ chức - Xây dựng Hội, điều đầu tiên bạn nghĩ đến là gì? Bạn nghĩ thực tế thì ban mình sẽ làm những công việc như thế nào?',
-      'Điều gì ở bạn khiến bạn chọn ban Tổ chức - Xây dựng Hội thay vì những “hương vị” khác trong Liên Chi hội?',
-      'Bạn có quen với việc soạn thảo công văn, làm báo cáo, hoặc viết mail hợp tác không? Nếu chưa, bạn sẵn sàng học chứ?',
-      'Bạn nghĩ mình có phù hợp với môi trường làm việc nhiều deadline, nhiều giấy tờ và yêu cầu sự chính xác cao không? Vì sao? Bạn nghĩ như thế nào về câu: “Sự hoàn hảo nằm trong từng chi tiết nhỏ”?',
-      'Giả sử còn 03 ngày để hoàn tất các công tác chuẩn bị cho một chương trình lớn của Liên Chi, nhưng các công việc vẫn còn dở dang và các thành viên xảy ra mâu thuẫn, bạn sẽ làm thế nào để xoa dịu xung đột và đảm bảo các khâu chuẩn bị được hoàn thành?'
+      'Nhắc đến ban Tổ chức - Xây dựng Hội, điều đầu tiên bạn nghĩ đến là gì? Bạn nghĩ thực tế thì ban mình sẽ làm những công việc như thế nào? Điều gì ở bạn khiến bạn chọn ban Tổ chức - Xây dựng Hội thay vì những “hương vị” khác trong Liên Chi hội?',
+      'Bạn có quen với việc soạn thảo công văn, làm báo cáo, hoặc viết mail hợp tác không? Nếu chưa, bạn sẵn sàng học chứ? Bạn nghĩ mình có phù hợp với môi trường làm việc nhiều deadline, nhiều giấy tờ và yêu cầu sự chính xác cao không? Vì sao?',
+      'Bạn nghĩ như thế nào về câu: “Sự hoàn hảo nằm trong từng chi tiết nhỏ”?',
+      'Nếu phải làm một việc không nằm trong sở thích hoặc sở trường, nhưng cần thiết cho Ban và cho cả Liên Chi, bạn sẽ làm thế nào?',
+      'Giả sử còn 03 ngày để hoàn tất các công tác chuẩn bị cho một chương trình lớn của Liên Chi, nhưng các công việc vẫn còn dở dang, các thành viên lại xảy ra mâu thuẫn, bất đồng về quan điểm, cách thức làm việc,... dẫn đến tình trạng không hợp tác. Bạn sẽ làm thế nào để xoa dịu xung đột đó, đồng thời vẫn đảm bảo các khâu chuẩn bị được hoàn thành trước ngày diễn ra chương trình?'
     ],
     "Sự kiện": [
       'Lí do vì sao bạn chọn vào ban Tổ chức Sự kiện? Bạn nghĩ mình sẽ có những tố chất hay kĩ năng phù hợp với ban này?',
       'Hãy kể về một sự kiện bạn từng tham gia (ở trường, CLB, lớp…), điều gì khiến bạn ấn tượng nhất hoặc muốn làm khác đi nếu bạn là Ban Tổ chức?',
-      'Trong quá trình diễn ra chương trình có những tình huống bất ngờ như: (1) mưa/gió ảnh hưởng ngoài trời; (2) khách mời chính đến muộn 30 phút. Bạn sẽ xử lý thế nào để chương trình vẫn thành công?',
-      'Bạn đang phụ trách một sự kiện lớn và một số thành viên không đồng ý với ý tưởng của bạn. Bạn sẽ làm gì để vừa duy trì đoàn kết vừa bảo vệ ý tưởng bạn tin là tốt?',
-      'Hệ thống âm thanh/ánh sáng gặp vấn đề trong workshop, bạn sẽ xử lí thế nào để chương trình tiếp tục?'
+      'Trong quá trình diễn ra chương trình, sẽ có những tình huống diễn ra bất ngờ mà bạn không thể lường trước. Dưới đây là một vài tình huống, với vai trò là một Ban Tổ chức, bạn sẽ xử lý thế nào để sự kiện vẫn diễn ra thành công:\n- Trong lúc diễn ra Hội trại truyền thống thường niên của Khoa Quản trị Kinh doanh, Ban Tổ chức dự kiến tổ chức các hoạt động ngoài trời. Tuy nhiên, thời tiết thay đổi đột ngột mưa, gió lớn có thể ảnh hưởng đến việc bố trí không gian ngoài trời và gây khó chịu cho sinh viên.\n- Nếu khách mời chính của chương trình bị kẹt xe và báo sẽ đến muộn 30 phút, bạn sẽ làm gì để giữ khán giả không bị chán trong thời gian chờ?',
+      'Bạn đang phụ trách một sự kiện lớn và đã lên kế hoạch chi tiết, nhưng một số thành viên trong nhóm lại không đồng ý với ý tưởng của bạn, cho rằng nó quá rủi ro và không khả thi. Bạn sẽ làm gì trong tình huống này? Hãy trình bày cụ thể cách bạn xử lý mâu thuẫn, vừa đảm bảo duy trì sự đoàn kết trong nhóm, vừa bảo vệ ý tưởng mà bạn tin là tốt nhất cho sự kiện.',
+      'Giả sử bạn là Ban Tổ chức của Workshop được tổ chức hằng năm nhằm hỗ trợ các kỹ năng cần thiết, kiến thức cho sinh viên. Trong lúc diễn ra chương trình có xảy ra sự cố đó là hệ thống âm thanh, ánh sáng gặp vấn đề và không thể điều chỉnh lại ngay được. Bạn sẽ xử lí như thế nào?'
     ],
     "Truyền thông - Đối ngoại": [
-      'Bạn từng có kinh nghiệm nào trong lĩnh vực truyền thông kỹ thuật không? Nếu có, mô tả hoặc đính kèm 01 dự án, bài làm bạn tự hào nhất. Bạn dùng phần mềm nào để thiết kế và dựng video?',
-      'Các hoạt động truyền thông của Liên Chi hội đòi hỏi sự đa nhiệm. Nếu bạn chỉ mạnh 1 mảng, bạn có sẵn sàng học thêm để đóng góp trọn vẹn hơn cho tập thể không?',
-      'Nếu được vào ban Truyền thông - Đối ngoại, bạn mong muốn nhận được gì từ phía các anh/chị và các bạn thành viên trong ban?',
-      'Khi gặp sự cố sát bài đăng hoặc thiết bị (laptop hư), bạn sẽ làm gì để đảm bảo nhiệm vụ được hoàn thành?',
-      'Sản phẩm của bạn nhận góp ý cần sửa nhưng bạn chưa chắc đó là phương án tốt hơn. Bạn sẽ im lặng sửa hay bảo vệ sản phẩm? Đồng thời: chọn 1 nhân vật (Hiệp sĩ Bánh Quy / Phù thủy Kẹo Mềm / Tinh Linh Thạch Sữa) để khởi đầu và giải thích vì sao.'
-    ]
-  };
+      'Bạn từng có kinh nghiệm nào trong lĩnh vực truyền thông kỹ thuật không? Nếu có, hãy mô tả hoặc đính kèm 01 dự án, bài làm bạn tự hào nhất. Và bạn dùng phần mềm nào để thiết kế (Photoshop, Illustrator,...), phần mềm nào để dựng video (After Effects, CapCut...)?. Các hoạt động truyền thông của Liên Chi hội thường đòi hỏi sự đa nhiệm và linh hoạt. Nếu bạn chỉ có thế mạnh ở 01 mảng cụ thể, bạn có sẵn sàng chủ động học hỏi, mở rộng kỹ năng để đóng góp trọn vẹn hơn cho tập thể không?',
+      'Nếu được trở thành một thành viên của ban Truyền thông - Đối ngoại, bạn mong muốn nhận được gì ở phía các anh chị cũng như các bạn thành viên cùng trong ban? (được hướng dẫn sử dụng các phần mềm thiết kế, chỉnh sửa; giải đáp về các kỹ năng làm Truyền thông - Đối ngoại,...)',
+      'Khi gặp một sự cố bất ngờ sát ngày đăng bài hoặc gặp vấn đề về thiết bị (laptop hư, không xuất được file,...) khiến bạn không thể hoàn thành kịp nhiệm vụ đã được giao trước, bạn sẽ làm gì? ',
+      'Trong trường hợp sản phẩm của bạn nhận được nhận xét (từ một cá nhân khác trong ban) cần sửa đổi nhưng bạn cảm thấy làm theo ý kiến đó chưa chắc đã tốt hơn so với việc giữ nguyên sản phẩm ban đầu, bạn sẽ chọn im lặng sửa theo hay lên tiếng bảo vệ sản phẩm của mình?',
+      'Hãy tưởng tượng bạn đang bước vào một thế giới trò chơi, nơi từng viên kẹo ngọt không chỉ là phần thưởng mà còn là thử thách. Ở đó, mỗi nhân vật đều mang trong mình một sức mạnh đặc biệt, sẵn sàng đồng hành cùng đồng đội trên hành trình chinh phục. Ở vạch xuất phát, bạn phải lựa chọn hóa thân thành một trong ba nhân vật sau:\n- Hiệp sĩ Bánh Quy: sở hữu những kỹ năng mà đồng đội khác không có nhưng đó không phải là sở trường lớn nhất, cũng chẳng phải con đường mà nhân vật muốn phát triển thêm. Hiệp sĩ sẽ phải từ bỏ cơ hội của bản thân mình và hỗ trợ cho đồng đội ở mảng còn thiếu.\n- Phù thủy Kẹo Mềm: có thể linh hoạt xoay chuyển, đảm nhận nhiều nhiệm vụ khác nhau, nhưng trình độ chưa thật sự đạt đến mức xuất sắc ở bất kỳ kỹ năng nào. \n- Tinh Linh Thạch Sữa: tỏa sáng rực rỡ ở một lĩnh vực duy nhất, khát khao cống hiến trọn vẹn sở trường ấy, nhưng khó lòng mở rộng bản thân sang những kỹ năng mới.\n Nếu phải lựa chọn một nhân vật để khởi đầu chuyến phiêu lưu trong thế giới kẹo ngọt này, bạn sẽ chọn nhân vật nào, và vì sao?' 
+  ]
+    };
 
   function renderBanQuestions(key) {
     banArea.innerHTML = '';
