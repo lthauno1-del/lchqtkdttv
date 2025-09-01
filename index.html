@@ -225,6 +225,50 @@ input[type="file"] {
   }
 }
 
+.slogan {
+  white-space: normal; /* để tự xuống dòng khi màn hình nhỏ */
+}
+@media (max-width:1024px) {
+  .container { padding: 12px; }
+}
+@media (max-width:640px) {
+  .container { padding: 8px; }
+}
+input, textarea, select {
+  font-size: 16px; /* iOS không bị zoom khi focus */
+}
+.contact-container {
+  display: flex;
+  justify-content: center;  /* căn giữa 2 box */
+  gap: 40px;                /* khoảng cách giữa 2 box */
+  margin-top: 20px;
+}
+
+.contact-box {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: left;
+  min-width: 260px;
+  flex: 1; /* cho 2 box cân nhau */
+}
+
+/* Khi màn hình nhỏ hơn 768px (điện thoại + tablet nhỏ) */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column; /* từ ngang → dọc */
+    gap: 20px;              /* giảm khoảng cách */
+    align-items: stretch;   /* box full ngang */
+  }
+
+  .contact-box:first-child { order: 1; } /* Ban Tổ Chức lên trước */
+  .contact-box:last-child { order: 2; }  /* IT xuống dưới */
+}
+.slogan {
+  display: inline-block;
+  font-size: clamp(12px, 4vw, 24px); /* Tự co dãn từ 12px đến 24px */
+}
 
   </style>
 </head>
@@ -245,11 +289,13 @@ input[type="file"] {
     <div class="text-center mt-4 reveal">
   <h1 class="title-sugar text-5xl md:text-6xl">SUGARCADE</h1>
   <div class="mt-2 flex justify-center gap-3">
-    <span class="slogan small-note text-2xl px-3 py-1 rounded-full glow-text"
-          style="background:linear-gradient(90deg,#ffe7f2,#f0e8ff);border:1px solid rgba(255,255,255,.6)">
-      Liên Chi Hội Khoa Quản trị Kinh doanh - Trường Đại học Kinh tế - Luật, ĐHQG TPHCM
-    </span>
-  </div>
+  <span class="slogan small-note text-2xl px-3 py-1 rounded-full glow-text text-center"
+        style="background:linear-gradient(90deg,#ffe7f2,#f0e8ff);border:1px solid rgba(255,255,255,.6)">
+    Liên Chi Hội Khoa Quản trị Kinh doanh<br>Trường Đại học Kinh tế - Luật, ĐHQG TPHCM
+  </span>
+</div>
+
+
 </div>
 
   </header>
