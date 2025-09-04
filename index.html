@@ -298,6 +298,44 @@ input, textarea, select {
   z-index: -1; /* nằm dưới toàn bộ nội dung */
   pointer-events: none; /* không chặn click */
 }
+/* Import font nổi bật */
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
+.title-sugar {
+  font-family: 'Fredoka One', cursive;
+  font-size: 10rem;
+  text-align: center;
+  background: linear-gradient(90deg, #ff4f91, #ff7aa8, #b86bff, #91b4ff);
+  background-size: 300% auto;
+  background-clip: text;
+-webkit-background-clip: text;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  animation: gradientMove 4s linear infinite, glowPulse 2.5s ease-in-out infinite;
+  text-shadow: 0 0 8px rgba(255, 122, 168, 0.6), 0 0 20px rgba(184, 107, 255, 0.8);
+}
+
+/* Gradient động */
+@keyframes gradientMove {
+  0% { background-position: 0% center; }
+  100% { background-position: 100% center; }
+}
+
+/* Glow nhấp nháy */
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 12px rgba(255, 122, 168, 0.6), 0 0 28px rgba(184, 107, 255, 0.8); }
+  50% { text-shadow: 0 0 20px rgba(255, 100, 200, 0.9), 0 0 40px rgba(180, 80, 255, 1); }
+}
+
+
+
+@keyframes shine {
+  0% { left: -50%; }
+  100% { left: 150%; }
+}
+</style>
 
   </style>
 </head>
@@ -375,8 +413,8 @@ input, textarea, select {
 
     <aside class="reveal">
       <div class="glass sticky top-6 max-w-5xl mx-auto">
-        <h3 class="text-2xl font-extrabold text-pink-600 text-center mb-2">Hoàn tất đăng ký để không bỏ lỡ cơ hội thú vị!</h3>
-        <p class="text-sm text-center text-gray-600 mb-3">Đăng ký tham gia – Cùng tạo nên hành trình tuyệt vời!</p>
+        <h3 class="text-2xl font-extrabold text-pink-600 text-center mb-2">Chia sẻ thông tin – Bắt đầu hành trình cùng Liên chi hội!</h3>
+        <p class="text-sm text-center text-gray-600 mb-3">Năng động – Sáng tạo – Hội nhập!</p>
         
 
         <form id="regForm" class="space-y-4">
@@ -413,6 +451,11 @@ input, textarea, select {
               <input class="field" name="tutin" required>
             </div>
 
+            <div class="mb-3">
+              <label class="question">Một số thành tựu cá nhân mà bạn đã đạt được:</label>
+              <input class="field" type="field" name="ttcn" required>
+            </div>
+
             <div class="mb-4">
               <label class="block mb-2 font-semibold">Hiện tại bạn đang sinh sống ở đâu?</label>
               <select name="choo" required class="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -439,17 +482,14 @@ input, textarea, select {
 
     <div class="mb-3">
         <label class="question">
-            2. Bạn phản ứng thế nào khi các thành viên cùng nhóm làm việc chậm hơn bạn mong muốn hoặc làm việc chưa hiệu quả? 
-            Khi gặp một nhiệm vụ mới và khó, bạn thường nghĩ “Mình sẽ làm được” hay “Mình cần học hỏi thêm trước”?
+            2. Bạn phản ứng thế nào khi các thành viên cùng nhóm làm việc chậm hơn bạn mong muốn hoặc làm việc chưa hiệu quả? Khi gặp một nhiệm vụ mới và khó, bạn thường nghĩ “Mình sẽ làm được” hay “Mình cần học hỏi thêm trước”?
         </label>
         <textarea class="field" name="cau2" rows="3" required></textarea>
     </div>
 
     <div class="mb-3">
         <label class="question">
-            3. Bạn lựa chọn một môi trường năng động để có những thay đổi mới hay những công việc ổn định có quy trình rõ ràng 
-            và luôn đạt được thành tích? Nếu bạn chọn chấp nhận thử thách, bạn nghĩ mình sẽ phải đối mặt với những khó khăn và rủi ro nào? 
-            Nếu bạn chọn công việc lặp đi lặp lại, bạn có sợ mình sẽ cảm thấy nhàm chán và mất động lực không?
+            3. Bạn lựa chọn một môi trường năng động để có những thay đổi mới hay những công việc ổn định có quy trình rõ ràng và luôn đạt được thành tích? Nếu bạn chọn chấp nhận thử thách, bạn nghĩ mình sẽ phải đối mặt với những khó khăn và rủi ro nào? Nếu bạn chọn công việc lặp đi lặp lại, bạn có sợ mình sẽ cảm thấy nhàm chán và mất động lực không?
         </label>
         <textarea class="field" name="cau3" rows="3" required></textarea>
     </div>
@@ -470,34 +510,28 @@ input, textarea, select {
 
     <div class="mb-3">
         <label class="question">
-            6. Bạn nghĩ rằng mình là người hướng nội hay hướng ngoại? Có ý kiến cho rằng người hướng ngoại sẽ dễ dàng hòa nhập, 
-            kết nối với mọi người và làm việc nhóm hiệu quả hơn so với người hướng nội, bạn nghĩ sao về ý kiến này?
+            6. Bạn nghĩ rằng mình là người hướng nội hay hướng ngoại? Có ý kiến cho rằng người hướng ngoại sẽ dễ dàng hòa nhập, kết nối với mọi người và làm việc nhóm hiệu quả hơn so với người hướng nội, bạn nghĩ sao về ý kiến này?
         </label>
         <textarea class="field" name="cau6" rows="3" required></textarea>
     </div>
 
     <div class="mb-3">
         <label class="question">
-            7. Giả sử bạn được giao một công việc phải hoàn thành trước ngày cuối tuần, nhưng đó là trong tuần thi cuối kỳ của bạn, 
-            bạn cũng chưa ôn bài kỹ. Bạn sẽ làm thế nào để vừa đảm bảo tiến độ công việc đúng hạn, vừa có thể ôn bài cho kỳ thi?
+            7. Giả sử bạn được giao một công việc phải hoàn thành trước ngày cuối tuần, nhưng đó là trong tuần thi cuối kỳ của bạn, bạn cũng chưa ôn bài kỹ. Bạn sẽ làm thế nào để vừa đảm bảo tiến độ công việc đúng hạn, vừa có thể ôn bài cho kỳ thi?
         </label>
         <textarea class="field" name="cau7" rows="3" required></textarea>
     </div>
 
     <div class="mb-3">
         <label class="question">
-            8. Trong quá trình làm việc nhóm, chắc chắn sẽ có lúc xảy ra áp lực hoặc mâu thuẫn. 
-            Nếu bạn rơi vào tình huống mất bình tĩnh (deadline gấp, đồng đội không phối hợp,...), 
-            bạn thường phản ứng thế nào? Bạn sẽ làm gì để lấy lại sự cân bằng và tiếp tục công việc?.
+            8. Trong quá trình làm việc nhóm, chắc chắn sẽ có lúc xảy ra áp lực hoặc mâu thuẫn. Nếu bạn rơi vào tình huống mất bình tĩnh (deadline gấp, đồng đội không phối hợp,...), bạn thường phản ứng thế nào? Bạn sẽ làm gì để lấy lại sự cân bằng và tiếp tục công việc?.
         </label>
         <textarea class="field" name="cau8" rows="3" required></textarea>
     </div>
 
     <div class="mb-3">
         <label class="question">
-            9. Bạn sẽ giải quyết ra sao nếu bạn và nhóm trưởng xảy ra mâu thuẫn và không cùng chung một hướng giải quyết, 
-            trong khi cách của nhóm trưởng không hiệu quả và bảo thủ, bạn sẽ nghe theo hay chứng minh và làm theo ý của mình? 
-            Nêu cách giải quyết cụ thể.
+            9. Bạn sẽ giải quyết ra sao nếu bạn và nhóm trưởng xảy ra mâu thuẫn và không cùng chung một hướng giải quyết, trong khi cách của nhóm trưởng không hiệu quả và bảo thủ, bạn sẽ nghe theo hay chứng minh và làm theo ý của mình? Nêu cách giải quyết cụ thể.
         </label>
         <textarea class="field" name="cau9" rows="3" required></textarea>
     </div>
@@ -662,7 +696,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /* Gửi form đến Google Apps Script */
   const statusEl = document.getElementById('status');
   const submitBtn = document.getElementById('submitBtn');
-  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxHitjiaY5GR6CvMSufCjmuFG-jgYAoctP-yuZsRU1MYT3bcrKMS3-1frFRYu6JV42v/exec';
+  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbz4UETThtfjdwc6clTJe8G7T7h0Bv2nov6D0kVEemdnbdBMkl2PwfU7Ok80k75Mh1qL/exec';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -676,7 +710,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxHitjiaY5GR6CvMSufCjmuFG-jgYAoctP-yuZsRU1MYT3bcrKMS3-1frFRYu6JV42v/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbz4UETThtfjdwc6clTJe8G7T7h0Bv2nov6D0kVEemdnbdBMkl2PwfU7Ok80k75Mh1qL/exec', {
   method: 'POST',
   body: new FormData(form)  // ← KHÔNG cần headers ở đây
  });
@@ -774,81 +808,76 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", resize);
   resize();
 
-  // Màu cơ bản + hiệu ứng cầu vồng
-  const baseColors = ["#ff4f81", "#b86bff", "#4fa3ff", "#00ffcc", "#ffe600"];
+  // Mảng màu hồng với nhiều cấp độ (không dùng 7 màu)
+const pinkColors = [
+  "#FFF5F7", // Hồng phấn siêu nhạt
+  "#FFEFF1", // Hồng sữa
+  "#FFE4E8", // Hồng nhạt nhẹ
+  "#FFDDE4", // Pastel rất nhạt
+  "#FFD1DC"  // Soft Pink nhạt
+];
 
-  function rainbowColor(t) {
-    const r = Math.floor(127 * Math.sin(0.3 * t) + 128);
-    const g = Math.floor(127 * Math.sin(0.3 * t + 2) + 128);
-    const b = Math.floor(127 * Math.sin(0.3 * t + 4) + 128);
-    return `rgb(${r},${g},${b})`;
-  }
+const candies = Array.from({ length: 35 }, () => createCandy());
 
-  // Tạo bong bóng
-  const bubbles = Array.from({ length: 35 }, () => createBubble());
+function createCandy() {
+  return {
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 20 + 15,
+    baseR: Math.random() * 20 + 15,
+    c: pinkColors[Math.floor(Math.random() * pinkColors.length)],
+    s: Math.random() * 0.8 + 0.3,
+    dx: (Math.random() - 0.5) * 0.5,
+    melting: Math.random() < 0.4,
+    life: 0,
+    maxLife: Math.random() * 200 + 150
+  };
+}
 
-  function createBubble() {
-    return {
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 15 + 10,
-      baseR: Math.random() * 15 + 10,
-      c: baseColors[Math.floor(Math.random() * baseColors.length)],
-      s: Math.random() * 1.5 + 0.5, // tốc độ bay nhanh hơn
-      dx: (Math.random() - 0.5) * 1.5,
-      rainbow: Math.random() < 0.3, // 30% bong bóng cầu vồng
-      burst: Math.random() < 0.25, // 25% bong bóng sẽ nở rồi vỡ
-      life: 0,
-      maxLife: Math.random() * 200 + 150
-    };
-  }
+let frame = 0;
 
-  let frame = 0;
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  candies.forEach((candy, i) => {
+    ctx.beginPath();
 
-    bubbles.forEach((b, i) => {
-      ctx.beginPath();
+    const gradient = ctx.createRadialGradient(candy.x, candy.y, candy.r * 0.3, candy.x, candy.y, candy.r);
+    gradient.addColorStop(0, "rgba(255,255,255,0.4)"); // trắng nhẹ
+    gradient.addColorStop(0.6, candy.c);
+    gradient.addColorStop(1, "rgba(255,240,245,0)"); // hồng nhạt mờ dần
 
-      // Nếu là bong bóng cầu vồng → đổi màu theo thời gian
-      const color = b.rainbow ? rainbowColor(frame + i * 20) : b.c;
+    ctx.fillStyle = gradient;
+    ctx.globalAlpha = 0.9;
+    ctx.arc(candy.x, candy.y, candy.r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1;
 
-      const gradient = ctx.createRadialGradient(b.x, b.y, b.r * 0.2, b.x, b.y, b.r);
-      gradient.addColorStop(0, color);
-      gradient.addColorStop(1, "rgba(0,0,0,0)");
+    candy.y += candy.s;
+    candy.x += candy.dx;
+    candy.life++;
 
-      ctx.fillStyle = gradient;
-      ctx.globalAlpha = 0.7; // đậm màu hơn
-      ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.globalAlpha = 1;
-
-      // Update vị trí
-      b.y -= b.s;
-      b.x += b.dx;
-      b.life++;
-
-      // Nếu bong bóng là loại nở → tăng kích thước nhanh
-      if (b.burst) {
-        b.r += 0.2;
-        if (b.life > b.maxLife) {
-          bubbles[i] = createBubble(); // Vỡ → tạo lại bong bóng mới
-        }
+    if (candy.melting) {
+      candy.r += 0.05;
+      if (candy.life > candy.maxLife) {
+        candies[i] = createCandy();
+        candies[i].y = -candies[i].r;
       }
+    }
 
-      // Nếu bong bóng bay lên quá cao → reset
-      if (b.y + b.r < 0) {
-        bubbles[i] = createBubble();
-        bubbles[i].y = canvas.height + b.r;
-      }
-    });
+    if (candy.y - candy.r > canvas.height) {
+      candies[i] = createCandy();
+      candies[i].y = -candies[i].r;
+    }
+  });
 
-    frame++;
-    requestAnimationFrame(animate);
-  }
+  frame++;
+  requestAnimationFrame(animate);
+}
 
-  animate();
+animate();
+
+
 });
 </script>
 
